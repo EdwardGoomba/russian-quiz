@@ -13,3 +13,13 @@ var html;
 function print(message) {
   document.write(message);
 }
+
+for (var i = 0; i < questions.length; i ++) {
+  question = questions[i][0];
+  answer = questions[i][1];
+  response = parseInt(prompt(question));
+
+  if (response === answer) {
+    correctAnswers++;
+  }
+}

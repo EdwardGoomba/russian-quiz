@@ -1,7 +1,16 @@
 var questions = [
-  ['What do Russians love to drink', 'Vodka'],
-  ['What are Russians favorite vegetable?', 'Potatoes'],
-  ['What is the Russians favorite animal?', 'Bear']
+  {
+    question: 'What do Russians love to drink',
+    answer: 'Vodka'
+  },
+  {
+    question: 'What are Russians favorite vegetable?',
+    answer: 'Potatoes'
+  },
+  {
+    question: 'What is the Russians favorite animal?',
+    answer: 'Bear'
+  }
 ];
 
 var correctAnswers = 0;
@@ -12,11 +21,13 @@ var html;
 var correct = [];
 var incorrect = [];
 
+// Use to print message to page
 function print(message) {
   var outputDiv = document.getElementById('output');
   outputDiv.innerHTML = message;
 }
 
+// Parse through array and add items to an ordered list
 function buildList(arr) {
   var listHTML = '<ol>';
   for (var i = 0; i < arr.length; i++) {
@@ -26,9 +37,10 @@ function buildList(arr) {
   return listHTML;
 }
 
+// Loop through array, access object and return responses
 for (var i = 0; i < questions.length; i += 1) {
-  question = questions[i][0];
-  answer = questions[i][1];
+  question = questions[i].question;
+  answer = questions[i].answer;
   response = prompt(question);
   response = response;
   if (response === answer) {
@@ -39,6 +51,7 @@ for (var i = 0; i < questions.length; i += 1) {
   }
 }
 
+//Concats answers and displays correct and incorrect answers as an ordered list
 html = "You got " + correctAnswers + " question(s) right."
 html += '<h2>You got these questions correct:</h2>';
 html += buildList(correct);

@@ -9,18 +9,33 @@ var question;
 var answer;
 var response;
 var html;
+var correct = [];
+var incorrect = [];
 
 function print(message) {
-  document.write(message);
+  var outputDiv = document.getElementById('output');
+  outputDiv.innerHTML = message;
+}
+
+function buildList(arr) {
+  var listHTML = '<ol>';
+  for (var i = 0; i < arr.length; i++) {
+    listHTML += '<li>' + arr[i] + '</li>';
+  }
+  listHTML += '</ol>';
+  return listHTML;
 }
 
 for (var i = 0; i < questions.length; i += 1) {
   question = questions[i][0];
   answer = questions[i][1];
   response = prompt(question);
-  response = parseInt(response);
+  response = response;
   if (response === answer) {
     correctAnswers += 1;
+    correct.push(question);
+  } else {
+    incorrect.push(question);
   }
 }
 
